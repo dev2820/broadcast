@@ -1,5 +1,5 @@
 import { test, expect } from "@jest/globals";
-import { createStore, Action } from "../src";
+import { createStore, Action } from "@/index";
 
 const countStore = createStore({
   state: { count: 0 },

@@ -6,6 +6,9 @@
     "lib": ["ESNext", "DOM"],
     "moduleResolution": "Node",
     "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "dist",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
@@ -19,5 +22,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "__test__/**/*.ts"]
+  "include": ["src/**/*.ts", "__test__/**/*.ts"],
+  "exclude": ["node_modules"]
 }
