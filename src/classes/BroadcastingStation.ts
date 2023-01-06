@@ -42,8 +42,8 @@ export default class BroadcastingStation extends CommunicationDevice {
     const response = new Packet({ type: PACKET_TYPE.OFFER }, currentState);
     this.broadcast(response);
   }
-  #handleAction(action: Action) {
-    const isChanged = this.#store.$dispatch(action);
+  async #handleAction(action: Action) {
+    const isChanged = await this.#store.$dispatch(action);
     if (!isChanged) return;
 
     const newState: Message = this.#store.$state;
