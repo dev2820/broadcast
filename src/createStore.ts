@@ -16,12 +16,21 @@ export default function createStore(storeOption: {
   }, new Map<string, any>());
 
   const actionMap = Object.keys(actions).reduce((map, key: string) => {
-    if (typeof actions[key] !== "function") return map;
+    const action = actions[key];
+    if (typeof action !== "function") return map;
+
+    if (action.constructor.name === "AsyncFunction") {
+      return map.set(key, async function () {
+        _isChanged_ = false;
+        await action.bind(store)(...arguments);
+
+        return _isChanged_;
+      });
+    }
 
     return map.set(key, function () {
       _isChanged_ = false;
-      const action = actions[key].bind(store);
-      action(...arguments);
+      action.bind(store)(...arguments);
 
       return _isChanged_;
     });

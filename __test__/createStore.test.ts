@@ -13,6 +13,11 @@ const countStore = createStore({
     setCount(newCount: number) {
       this.count = newCount;
     },
+    async asyncSetCount(newCount: number) {
+      this.count = await new Promise((resolve) => {
+        resolve(newCount);
+      });
+    },
   },
 });
 
@@ -68,4 +73,23 @@ test("how to use $dispatch", () => {
   const isChanged = countStore.$dispatch(action);
   expect(isChanged).toBe(true);
   expect(countStore.count).toBe(3);
+});
+
+test("how to use async action", async () => {
+  /**
+   * you can also use actions with async/await
+   */
+  const isChanged = await countStore.asyncSetCount(5);
+  expect(isChanged).toBe(true);
+  expect(countStore.count).toBe(5);
+});
+
+test("how to use async action with $dispatch", async () => {
+  /**
+   * you can also use actions with async/await
+   */
+  const action = new Action("asyncSetCount", 4);
+  const isChanged = await countStore.$dispatch(action);
+  expect(isChanged).toBe(true);
+  expect(countStore.count).toBe(4);
 });
