@@ -50,4 +50,10 @@ export default class BroadcastingStation extends CommunicationDevice {
     const response = new Packet({ type: PACKET_TYPE.NEW_STATE }, newState);
     this.broadcast(response);
   }
+
+  forceUpdate() {
+    const newState: Message = this.#store.$state;
+    const response = new Packet({ type: PACKET_TYPE.NEW_STATE }, newState);
+    this.broadcast(response);
+  }
 }
