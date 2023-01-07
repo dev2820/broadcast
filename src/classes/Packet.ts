@@ -1,7 +1,7 @@
-import Action from "./Action";
-import PacketHeader from "../types/PacketHeader";
-import Message from "../types/Message";
-import * as PACKET_TYPE from "../constants/PACKET_TYPES";
+import Action from "@/classes/Action";
+import PacketHeader from "@/types/PacketHeader";
+import Message from "@/types/Message";
+import * as PACKET_TYPE from "@/constants/PACKET_TYPES";
 export default class Packet {
   header: PacketHeader;
   payload?: Action | Message;

@@ -1,8 +1,8 @@
-import ChannelAddress from "../types/ChannelAddress";
-import CommunicationDevice from "./CommunicationDevice";
-import Action from "./Action";
-import Packet from "./Packet";
-import * as PACKET_TYPE from "../constants/PACKET_TYPES";
+import ChannelAddress from "@/types/ChannelAddress";
+import CommunicationDevice from "@/classes/CommunicationDevice";
+import Action from "@/classes/Action";
+import Packet from "@/classes/Packet";
+import * as PACKET_TYPE from "@/constants/PACKET_TYPES";
 
 export default class Radio extends CommunicationDevice {
   protected listeners: Function[] = [];

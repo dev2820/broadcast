@@ -1,6 +1,6 @@
-import Broadcastable from "../interfaces/Broadcastable";
-import ChannelAddress from "../types/ChannelAddress";
-import Packet from "./Packet";
+import Broadcastable from "@/interfaces/Broadcastable";
+import ChannelAddress from "@/types/ChannelAddress";
+import Packet from "@/classes/Packet";
 
 export default abstract class CommunicationDevice implements Broadcastable {
   #sender: BroadcastChannel;
