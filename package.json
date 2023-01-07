@@ -21,6 +21,7 @@
   "files": [
     "dist/**"
   ],
+  "license": "MIT",
   "devDependencies": {
     "@types/babel__core": "^7.1.20",
     "@types/node": "^18.11.18",
