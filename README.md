@@ -1,9 +1,7 @@
 # Broadcasting
-Broadcasting is a State management library available in chrome extensions
+Broadcasting is a State management library available in chrome extensions. It enables reactive programming in the Browser Extension environment where the View area and Background area are separated.
 
-Broadcasting helps you write Chrome Extension Application that follow MVVM patterns. 
-
-Broadcasting is a library that allows view and background areas to communicate in a pub/sub structure through Broadcast Channel. two classes exist for communication, Radio and Broadcasting. when Radio subscribes to Broadcasting, Broadcasting informs Radio of the changes. 
+Broadcasting is a library that allows view and background areas to communicate in a pub/sub structure through Broadcast Channel. two classes exist for communication, Radio, and Broadcasting. when Radio subscribes to Broadcasting, Broadcasting informs Radio of the changes.  
 
 ## Installation
 
@@ -14,7 +12,7 @@ npm install broadcasting
 ## How to use
 
 ### make store 
-create a store that contains status and actions to change status. place the store in the background.
+Create a store that contains status and actions to change status. place the store in the background.
 
 ```ts
 // background.ts
@@ -35,7 +33,7 @@ const store = createStore({
 });
 ```
 
-**Note**  you must create a new array or object when you update it because it does not keep track of the array and object updates. like below.
+**Note**  You must create a new array or object when you update it because it does not keep track of the array and object updates. like below.
 
 ```ts
 const store = createStore({
@@ -51,7 +49,7 @@ const store = createStore({
 ```
 
 ### create BroadcastingStation
-creates a Broadcasting Station to broadcast changes in the state of the store.
+Creates a Broadcasting Station to broadcast changes in the state of the store.
 
 ```ts
 // background.ts
@@ -61,7 +59,7 @@ const store = createStore({...});
 const broadcastingStation = new BroadcastingStation("count", copyStore);
 ```
 
-now, read the `channelAddress` value of broadcastingStation. this value is used to create a Radio for communication.
+Now, read the `channelAddress` value of `broadcastingStation`. this value is used to create a Radio for communication.
 communicate to the area you want to communicate with Broadcasting Station (such as 'popup') through runtime.postMessage, etc.
 
 ```ts
@@ -83,10 +81,8 @@ chrome.runtime.onMessage.addListener(handleRuntimeMessage)
 ```
 
 ### create Radio
-In order to communicate with `BroadcastingStation`, you need to create a `Radio` 
-
-
-for example, i have `popup.html` as below. my js(or ts) code will be located in popup.ts file.
+To communicate with `BroadcastingStation`, you need to create a `Radio` 
+for example, I have `popup.html` as below. my js(or ts) code will be located in the `popup.ts` file.
 ```html
 <!-- popup.html -->
 <html>
@@ -99,7 +95,7 @@ for example, i have `popup.html` as below. my js(or ts) code will be located in 
 </html>
 ```
 
-make Radio in `popup.ts` 
+Make Radio in the `popup.ts` 
 ```ts
 // popup.ts
 import { type ChannelAddress, Radio } from "broadcasting";
